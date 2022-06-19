@@ -27,4 +27,10 @@ class UserRegistrationTest {
         assertFalse(UserRegistration.phoneNumber("917020558545"));
         assertTrue(UserRegistration.phoneNumber("0 1234567890"));
     }
+    @Test
+    public void testPassword() throws UserRegistrationException {
+        assertTrue(UserRegistration.passwordRule1("asshhhhh"));
+        assertFalse(UserRegistration.passwordRule1("aabcd"));
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.bridgelabz.junituserregistration;
 /*
- * As a User need to follow pre-defined Mobile Format
+ * As a User need to follow pre-defined Password rules
+ * Rule-1-minimum 8 characters
  * @author : Ashwini Shirsath
  */
 import java.util.regex.Matcher;
@@ -51,6 +52,17 @@ public class UserRegistration {
         String regex = "^(0|91)?[\\s][0-9]{10}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(phoneNumber);
+        return matcher.matches();
+    }
+    public static boolean passwordRule1(String password) throws UserRegistrationException {
+        if (password == null) {
+            throw new UserRegistrationException(UserRegistrationException.ExceptionType.NULL, " Input can't be Null");
+        } else if (password.length() == 0) {
+            throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMPTY, "Invalid Input");
+        }
+        String regex = "^[0-9a-zA-Z!,@#$&*().]{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
         return matcher.matches();
     }
 }
