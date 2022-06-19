@@ -1,6 +1,6 @@
 package com.bridgelabz.junituserregistration;
 /*
- * Rule2– Should have at least 1 numerical number in the password
+ * Rule4-Has exactly 1 special Character
  * @author : Ashwini Shirsath
  */
 import java.util.regex.Matcher;
@@ -85,6 +85,16 @@ public class UserRegistration {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
-
+    }
+    public static boolean passwordRule4(String password) throws UserRegistrationException {
+        if (password == null) {
+            throw new UserRegistrationException(UserRegistrationException.ExceptionType.NULL, " Input can't be Null");
+        } else if (password.length() == 0) {
+            throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMPTY, "Invalid Input");
+        }
+        String regex = "^(?=.*[A-Z]){1}(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%!]).{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
     }
 }
