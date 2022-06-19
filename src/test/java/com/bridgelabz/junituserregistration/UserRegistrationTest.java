@@ -12,4 +12,10 @@ class UserRegistrationTest {
         assertTrue(UserRegistration.firstName("Ashwini"));
         assertFalse(UserRegistration.firstName("asdhjas"));
     }
+    @Test
+    public void testLastName() throws UserRegistrationException {
+        assertTrue(UserRegistration.lastName("Shirsath"));
+        assertFalse(UserRegistration.lastName("ahh"));
+    }
+
 }
