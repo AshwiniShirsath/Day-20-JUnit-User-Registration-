@@ -1,7 +1,6 @@
 package com.bridgelabz.junituserregistration;
 /*
- * As a User need to follow pre-defined Password rules
- * Rule-1-minimum 8 characters
+ * Rule2– Should have at least 1 Upper Case
  * @author : Ashwini Shirsath
  */
 import java.util.regex.Matcher;
@@ -61,6 +60,17 @@ public class UserRegistration {
             throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMPTY, "Invalid Input");
         }
         String regex = "^[0-9a-zA-Z!,@#$&*().]{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+    public static boolean passwordRule2(String password) throws UserRegistrationException {
+        if (password == null) {
+            throw new UserRegistrationException(UserRegistrationException.ExceptionType.NULL, " Input can't be Null");
+        } else if (password.length() == 0) {
+            throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMPTY, "Invalid Input");
+        }
+        String regex = "^(?=.*[A-Z]){1}(?=.*[a-z]).{8,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();

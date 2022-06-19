@@ -24,13 +24,17 @@ class UserRegistrationTest {
     }
     @Test
     public void testPhoneNumber() throws UserRegistrationException {
-        assertFalse(UserRegistration.phoneNumber("917020558545"));
-        assertTrue(UserRegistration.phoneNumber("0 1234567890"));
+        assertTrue(UserRegistration.phoneNumber("91 7020558545"));
+        assertFalse(UserRegistration.phoneNumber("01234567890"));
     }
     @Test
     public void testPassword() throws UserRegistrationException {
-        assertTrue(UserRegistration.passwordRule1("asshhhhh"));
+        assertTrue(UserRegistration.passwordRule1("12asHU@#"));
         assertFalse(UserRegistration.passwordRule1("aabcd"));
     }
-
+    @Test
+    public void testPassword1() throws UserRegistrationException {
+        assertTrue(UserRegistration.passwordRule2("AsHushir"));
+        assertFalse(UserRegistration.passwordRule2("ashwbhw"));
+    }
 }
