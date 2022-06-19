@@ -37,4 +37,9 @@ class UserRegistrationTest {
         assertTrue(UserRegistration.passwordRule2("AsHushir"));
         assertFalse(UserRegistration.passwordRule2("ashwbhw"));
     }
+    @Test
+    public void testPassword2() throws UserRegistrationException {
+        assertTrue(UserRegistration.passwordRule3("Password1"));
+        assertFalse(UserRegistration.passwordRule3("jndkajdj"));
+    }
 }
