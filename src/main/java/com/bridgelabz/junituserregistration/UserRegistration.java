@@ -1,6 +1,6 @@
 package com.bridgelabz.junituserregistration;
 /*
- * Rule4-Has exactly 1 special Character
+ * Should clear all email sample provided separately
  * @author : Ashwini Shirsath
  */
 import java.util.regex.Matcher;
@@ -95,6 +95,17 @@ public class UserRegistration {
         String regex = "^(?=.*[A-Z]){1}(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%!]).{8,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+    public static boolean emailIdValidator(String emailId) throws UserRegistrationException {
+        if (emailId == null) {
+            throw new UserRegistrationException(UserRegistrationException.ExceptionType.NULL, " Input can't be Null");
+        } else if (emailId.length() == 0) {
+            throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMPTY, "Invalid Input");
+        }
+        String regex = "^[a-z]{3,}+([_+-.][a-z0-9]{3,}+)*@[a-z0-9]+.[a-z]{2,3}+([.,]?[a-z]{2,3}){0,1}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(emailId);
         return matcher.matches();
     }
 }
